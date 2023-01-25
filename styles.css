@@ -1,0 +1,76 @@
+/* GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* The '*' selector selects all elements in an HTML file. 
+I am declaring the margin, padding and box-sizing properties to get rid of default values throughout the doc. */
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+body {
+    background-color: white;
+}
+
+header {
+    width: 100%;
+    background-color: rgb(9,92,123);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+#title {
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 3rem;
+}
+
+#plus {
+    color: rgb(255,231,10);
+}
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.input {
+    width: 500px;
+    margin-bottom: 10px;
+    height: 2rem;
+    border: 2px solid grey;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.required {
+    font-size: 0.8rem;
+    color: red;
+    font-style: italic;
+}
+
+.button{ 
+    width: 50%;
+    margin: auto;
+    background-color: rgb(9,92,123);
+    color: rgb(255,231,10);
+    cursor: pointer;
+    height: 2rem;
+}
+
