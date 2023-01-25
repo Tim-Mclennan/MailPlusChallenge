@@ -1,4 +1,4 @@
-# MailPlusChallenge
+# MailPlus
 
 ![image](https://user-images.githubusercontent.com/102727510/214451058-74957f08-6d66-4b27-983a-1eef470fe833.png)
 
