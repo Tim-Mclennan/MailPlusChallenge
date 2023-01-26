@@ -72,5 +72,10 @@ main {
     color: rgb(255,231,10);
     cursor: pointer;
     height: 2rem;
+    align-text: center;
+}
+
+.tableContainer {
+    margin-top: 50px;
 }
 

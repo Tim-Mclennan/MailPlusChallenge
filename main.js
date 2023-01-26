@@ -1,8 +1,8 @@
-const addressBtn = document.querySelector('#addressBtn');
 const companyName = document.querySelector('#companyName');
 const email = document.querySelector('#email');
 const phoneNumber = document.querySelector('#phoneNumber');
 const address1 = document.querySelector('#address1');
+const addressBtn = document.querySelector('#addressBtn');
 const address2 = document.querySelector('#address2');
 const city = document.querySelector('#city');
 const state = document.querySelector('#state');
@@ -49,11 +49,9 @@ addressBtn.addEventListener('click', findLocation);
 
 
 // DataTable
-const table = document.getElementById('table');
-let editor;
-
-//event listener for the submit button
+const form = document.getElementById("form");
 const submit = document.getElementById('submit');
+const table = document.getElementById('table');
 
 // Loads the DataTable upon DOM render
 document.addEventListener('DOMContentLoaded', function () {
@@ -61,49 +59,64 @@ document.addEventListener('DOMContentLoaded', function () {
     submit.addEventListener('click', addRow);
     
     function addRow(event) {
+                
         // prevent form submission
         event.preventDefault();
+
+        //checking the validity of each required input
+        if (!companyName.checkValidity()) {
+            alert("Please enter a company name.");
+        } else if (!email.checkValidity()) {
+            alert("Please enter an email.");
+        } else if (!phoneNumber.checkValidity()) {
+            alert("Please enter a valid phone number that is ten digits long.");
+        } else if (!address1.checkValidity()) {
+            alert("Please enter a mailing address.");
+        }  else {
+
 
         const companyNameTable = companyName.value;
         const emailTable = email.value;
         const phoneNumberTable = phoneNumber.value; 
         const addressTable = `<a href="http://maps.google.com/?q=${address1.value} ${address2.value}  ${city.value} ${state.value}  ${postcode.value}">${address1.value} ${address2.value}  ${city.value}  ${state.value}  ${postcode.value}</a>`
-        actionTable = `<button class="editBtn">Edit</button>  <button class="deleteBtn">Delete</button>`;
+        actionTable = `<button id="editBtn">Edit</button>  <button id="deleteBtn">Delete</button>`;
         // add data to DataTable
         dataTable.row.add([companyNameTable, emailTable, phoneNumberTable, addressTable, actionTable]).draw();
-    }
 
-    //removes row in DataTable:
-    table.addEventListener("click", (event) => {
-        if (event.target.classList.contains("deleteBtn")) {
+        //ability to remove row in DataTable:
+        const deleteBtn = document.getElementById('deleteBtn');
+        deleteBtn.addEventListener("click", (event) => {
             const tr = event.target.closest("tr");
             const row = dataTable.row(tr);
-            row.remove().draw();
-        }
-        // Edits row in DataTable:
-        if (event.target.classList.contains("editBtn")) {
+            row.remove().draw()    
+        })
+        // ability to edit row in DataTable and creates a save button:
+        const editBtn = document.getElementById('editBtn');
+        editBtn.addEventListener("click", (event) => {
             const row = event.target.parentNode.parentNode;
             const tds = row.querySelectorAll("td");
             tds.forEach(function(td) {
-            const currentValue = td.innerHTML;
+            const currentValue = td.innerText;
             td.innerHTML = `<input type="text" value="${currentValue}">`;
             });
             const saveBtn = document.createElement("button");
             saveBtn.innerHTML = "Save";
             saveBtn.classList.add("save");
-            row.appendChild(saveBtn);
-        } // implements the save button
-        else if (event.target.classList.contains("save")) {
-            const row = event.target.parentNode;
-            const inputs = row.querySelectorAll("input");
-            inputs.forEach(function(input, index) {
-              const newValue = input.value;
-              const td = row.querySelectorAll("td")[index];
-              td.innerHTML = newValue;
-            });
-            event.target.remove();
-        }
-    });
-
+            row.appendChild(saveBtn); 
+            
+            // Save Button
+            saveBtn.addEventListener("click", (event) => {
+                const row = event.target.parentNode;
+                const inputs = row.querySelectorAll("input");
+                inputs.forEach(function(input, index) {
+                  const newValue = input.value;
+                  const td = row.querySelectorAll("td")[index];
+                  td.innerHTML = newValue;
+                });
+                event.target.remove();
+            })
+        })
+    }
+    }
 });
 
