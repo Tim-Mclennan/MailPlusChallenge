@@ -13,7 +13,9 @@ I am declaring the margin, padding and box-sizing properties to get rid of defau
 #form {
     display: flex;
     flex-direction: column;
-    
+    border: 2px solid lightgrey;
+    padding: 20px;
+    border-radius: 5px;
 }
 
 body {
@@ -77,5 +79,9 @@ main {
 
 .tableContainer {
     margin-top: 50px;
+}
+
+#submit {
+
 }
 
