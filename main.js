@@ -1,8 +1,8 @@
 const companyName = document.querySelector('#companyName');
 const email = document.querySelector('#email');
 const phoneNumber = document.querySelector('#phoneNumber');
-const address1 = document.querySelector('#address1');
 const addressBtn = document.querySelector('#addressBtn');
+const address1 = document.querySelector('#address1');
 const address2 = document.querySelector('#address2');
 const city = document.querySelector('#city');
 const state = document.querySelector('#state');
@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
     submit.addEventListener('click', addRow);
     
     function addRow(event) {
-                
         // prevent form submission
         event.preventDefault();
 
@@ -73,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (!address1.checkValidity()) {
             alert("Please enter a mailing address.");
         }  else {
-
 
         const companyNameTable = companyName.value;
         const emailTable = email.value;
@@ -120,3 +118,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// Google address autocomplete:
+let autocomplete;
+function initAutocomplete() {
+    // Create the autocomplete object, restricting the search predictions to
+    // addresses in the US and Canada.
+    autocomplete = new google.maps.places.Autocomplete(address1, {
+      componentRestrictions: { country: ["AU"] },
+      fields: ["address_components", "geometry", 'name'],
+      types: ["address"],
+    });
+    address1Field.focus();
+    // When the user selects an address from the drop-down, populate the
+    // address fields in the form.
+    autocomplete.addListener("place_changed", fillInAddress);
+  }

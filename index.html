@@ -26,12 +26,12 @@
             <button class="button" type="button" id="addressBtn">AutoFill Address</button>
             <br>
             <label for="address1">Address Line 1: <span class="required">Required</span></label>
-            <input required class="input" type="text" id="address1" name="address1">
+            <input placeholder="Mailing address Eg. 123 George Street Sydney" required class="input" type="text" id="address1" name="address1">
           
             <label for="address2">Address Line 2:</label>
             <input class="input" type="text" id="address2" name="address2">
 
-            <label for="city">City:</label>
+            <label for="city">City/Suburb:</label>
             <input class="input" type="text" id="city" name="city">
             
             <label for="state">State:</label>
@@ -66,6 +66,7 @@
     </main>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initAutocomplete&libraries=places&v=weekly" async></script>
     <script src="main.js"></script>
 </body>
 </html>
