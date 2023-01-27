@@ -122,8 +122,8 @@ document.addEventListener('DOMContentLoaded', function () {
 let autocomplete;
 function initAutocomplete() {
     // Create the autocomplete object, restricting the search predictions to
-    // addresses in the US and Canada.
     autocomplete = new google.maps.places.Autocomplete(address1, {
+    // addresses in Australia.
       componentRestrictions: { country: ["AU"] },
       fields: ["address_components", "geometry", 'name'],
       types: ["address"],
