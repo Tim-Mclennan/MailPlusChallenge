@@ -78,9 +78,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const phoneNumberTable = phoneNumber.value; 
         const addressTable = `<a href="http://maps.google.com/?q=${address1.value} ${address2.value}  ${city.value} ${state.value}  ${postcode.value}">${address1.value} ${address2.value}  ${city.value}  ${state.value}  ${postcode.value}</a>`
         actionTable = `<button id="editBtn">Edit</button>  <button id="deleteBtn">Delete</button>`;
+       
         // add data to DataTable
-        dataTable.row.add([companyNameTable, emailTable, phoneNumberTable, addressTable, actionTable]).draw();
-
+        const addedRow = dataTable.row.add([companyNameTable, emailTable, phoneNumberTable, actionTable]).draw().node();
+        // Add child row
+        dataTable.row(addedRow).child(function() {
+            return ("Mailing Address for " + companyNameTable + ": " + addressTable);
+        }).show();
+        
         //ability to remove row in DataTable:
         const deleteBtn = document.getElementById('deleteBtn');
         deleteBtn.addEventListener("click", (event) => {
@@ -114,8 +119,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 event.target.remove();
             })
         })
+        }
     }
-    }
+ 
 });
 
 // Google address autocomplete:
