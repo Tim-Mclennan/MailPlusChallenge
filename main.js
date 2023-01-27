@@ -128,8 +128,26 @@ function initAutocomplete() {
       fields: ["address_components", "geometry", 'name'],
       types: ["address"],
     });
-    address1Field.focus();
+    address2.focus();
     // When the user selects an address from the drop-down, populate the
     // address fields in the form.
     autocomplete.addListener("place_changed", fillInAddress);
   }
+
+  function fillInAddress() {
+    const place = autocomplete.getPlace();
+    
+  // Get each component of the address from the place details,
+  // and then fill-in the corresponding field on the form.
+  // place.address_components are google.maps.GeocoderAddressComponent objects
+  // which are documented at http://goo.gle/3l5i5Mr
+  city.value = place.address_components[2].long_name;
+  state.value = place.address_components[4].long_name;
+  postcode.value = place.address_components[6].long_name;
+  latitude.value = place.geometry.viewport.Ia.lo;
+  longitude.value = place.geometry.viewport.Ya.lo;
+  // After filling the form with address components from the Autocomplete
+  // prediction, set cursor focus on the second address line to encourage
+  // entry of subpremise information such as apartment, unit, or floor number.
+  address2.focus();
+}
