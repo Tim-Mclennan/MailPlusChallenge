@@ -54,7 +54,6 @@ const submit = document.getElementById('submit');
 const table = document.getElementById('table');
 
 // Loads the DataTable upon DOM render
-document.addEventListener('DOMContentLoaded', function () {
     let dataTable = new DataTable('#table');
     submit.addEventListener('click', addRow);
     
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const emailTable = email.value;
         const phoneNumberTable = phoneNumber.value; 
         const addressTable = `<a href="http://maps.google.com/?q=${address1.value} ${address2.value}  ${city.value} ${state.value}  ${postcode.value}">${address1.value} ${address2.value}  ${city.value}  ${state.value}  ${postcode.value}</a>`
-        actionTable = `<button id="addressBtn">Show Address</button> <button id="editBtn">Edit</button>  <button id="deleteBtn">Delete</button>`;
+        actionTable = `<button class="btns" id="addressBtn">Show Address</button> <button class="btns" id="editBtn">Edit</button>  <button class="btns" id="deleteBtn">Delete</button>`;
        
         // add data to DataTable
         const addedRow = dataTable.row.add([companyNameTable, emailTable, phoneNumberTable, actionTable]).draw().node();
@@ -128,9 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
         })
         }
-    }
- 
-});
+    };
 
 // Google address autocomplete:
 let autocomplete;

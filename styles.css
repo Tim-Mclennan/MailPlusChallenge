@@ -81,7 +81,29 @@ main {
     margin-top: 50px;
 }
 
-#submit {
+td > .btns {
+    width: 100%;
+    cursor: pointer;
+    height: 2rem;
+    align-text: center;
+    background-color: rgb(9,92,123);
+    color: rgb(255,231,10);
+    border-radius: 5px;
+}
+
+#addressBtn {
+    height: 3rem;
+
+}
+
+#editBtn {
+    background-color: blue;
+    color: white;
+}
+
+#deleteBtn {
+    background-color: red;
+    color: white;
 
 }
 
